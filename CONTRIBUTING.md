@@ -19,13 +19,15 @@ Would you like to try making a small PR? If yes, post this in the residency chan
 
 James will send an invitation. Open the GitHub email or notification, sign in to the account you gave James, and accept it. No invitations are automatic. You do not need a Vercel account, a Neon account or James's AI credentials.
 
-The repository is initially private. If its link gives you a 404, check that you are signed in to the invited account and have accepted the invitation. Ask James if access is still missing.
+The repository is public: https://github.com/jamescockburn47/firmlens. Anyone can read it. Contributor access lets you push your own branches; it does not give permission to merge or deploy. James reviews proposed changes before they reach main.
+
+You can also contribute without an invitation: click **Fork** on the repository page to create your own copy. Clone your fork's HTTPS address instead. When opening the PR, choose **compare across forks**, with base repository **jamescockburn47/firmlens**, base **main**, and your fork/branch as the head. The rest of this guide is the same.
 
 ## 3. Open a local copy with your coding agent
 
 A **repository** is the files and their history. A **branch** is your separate set of proposed changes. A **commit** saves a named set of changes. A **pull request** asks James to review your branch; it does not publish it.
 
-Open the repository link James supplies. Click the green **Code** button, select **HTTPS** and copy the repository address. Open Codex or Claude Code and give it this setup prompt:
+Open https://github.com/jamescockburn47/firmlens. Click the green **Code** button, select **HTTPS** and copy the repository address. Open Codex or Claude Code and give it this setup prompt:
 
 ```text
 Help me set up a local copy of this repository: [paste the HTTPS address].

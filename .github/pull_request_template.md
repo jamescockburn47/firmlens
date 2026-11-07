@@ -1,15 +1,15 @@
-## Problem and user impact
+## What I noticed on the site
 
-What did you observe? Include reproduction steps and a source/screenshot where relevant.
+My task, steps and the result I saw. Include an entry link or screenshot where useful.
 
-## Change
+## What I chose to change and why
 
-What does the reader experience differently? Which part of the architecture changed?
+My reason for preferring this change. What did I keep, question or reject from the agent's suggestions?
 
-## Verification
+## What happens now
 
-Commands actually run, results and before/after evidence. Include a case that could reject a plausible wrong fix. For AI output, show claim-to-source support; a matching quotation is not enough.
+Before/after evidence from repeating my original task locally. For a factual AI-output change, include the source passage or clearly labelled test fixture.
 
-## Limits and judgment
+## Checks and limits
 
-What remains untested? Which AI suggestion did you reject or revise, and why? Any migration, permission or deployment consequences?
+Commands actually run and their results. What could still be wrong? What did I not test?

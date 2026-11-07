@@ -1,6 +1,6 @@
 # FirmLens: what runs where
 
-**Status, 7 November 2026:** the original app still serves `firmlens.app`. The replacement application is being checked before the domain moves. The Neon database restore matched all fields: 14 entries, 17 source snapshots and 1 settings row. A successful restore does not prove sign-in, AI-tool access or scheduling.
+**Status, 7 November 2026:** the original app still serves `firmlens.app`. The replacement is live for migration checks at https://firmlens-beta.vercel.app, built from the public GitHub repository. The public domain has not moved. The Neon database restore matched all fields: 14 entries, 17 source snapshots and 1 settings row. A successful restore does not prove sign-in, AI-tool access or scheduling.
 
 ```mermaid
 flowchart TD
@@ -21,15 +21,15 @@ flowchart TD
 
 | Element | What it does | Status |
 |---|---|---|
-| Public page | Lets visitors search and read stored records without login. | Working on the original site; replacement built and awaiting live checks. |
+| Public page | Lets visitors search and read stored records without login. | Working on the original site; replacement public reads verified with all 14 entries and 12 AI summaries. |
 | Server/API | Loads records, fetches known sources and controls writes. | Ported to Next.js; focused tests and build pass. |
 | Neon Postgres | Retains the evidence and derived summaries, including history. | Full restore verified against original export. |
-| Neon Auth | Identifies the owner; signing in alone does not grant editing rights. | Configured; Google callback and owner action need a live probe. |
+| Neon Auth | Identifies the owner; signing in alone does not grant editing rights. | Google sign-in returned to Owner view; owner source check persisted; anonymous/forged writes rejected. |
 | Source fetching | Revisits an already-curated URL and stores retrieved text. | Existing logic retained; this is not new-source discovery. |
 | AI analysis | Codex reads a source packet, drafts a summary/change explanation, then calls a save tool. | Existing saved summaries retained. New authenticated connection still needs proof. No model API key is required by this implementation. |
 | Save checks | Reject stale snapshots and invalid quotes; preserve history. | Deterministic checks retained. They do not prove every summary claim follows from the quote. |
 | Weekly check | Tells an agent to repeat source checks and analysis. | Original schedule exists; replacement not yet verified. A schedule is not a successful unattended run. |
-| GitHub/Vercel | Holds reviewable code and runs it on a hosting service. | Migration in progress; see DEPLOYMENT.md for release evidence. |
+| GitHub/Vercel | Holds reviewable code and runs it on a hosting service. | Public repository and connected deployment exist; clean GitHub CI and Vercel builds pass. Domain cutover remains pending. |
 | Resident preview | Runs the public UI against three invented entries. | Local-only, read-only; no production credentials or model calls. |
 
 **Follow one entry:** the server fetches an official announcement → stores the retrieved text → Codex reads that evidence → sends back a proposed summary and quote → the server checks permission, snapshot and quote → saves the result → everyone reads the stored result. Reading a card does not call an LLM.

@@ -1,15 +1,15 @@
 ---
-name: Resident review
-about: Report a tested AI-output, functionality or UI/UX finding
-title: '[Review] '
+name: Resident observation
+about: Share something you noticed while using FirmLens
+title: '[Observation] '
 ---
 
-**User/task:**
-**URL, date and browser:**
-**Steps:**
-**Expected / actual:**
-**Source passage or screenshot:**
-**Supported / contradicted / cannot establish:**
-**Consequence and priority:**
-**Suggested change and pass/fail test:**
-**What I could not test:**
+**I was trying to:**
+
+**I noticed:**
+
+**I would keep or change this because:**
+
+**Entry, source link or screenshot:**
+
+**Optional: what I checked / could not establish:**

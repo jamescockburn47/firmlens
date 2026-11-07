@@ -1,9 +1,20 @@
 'use client';
-import {useState} from 'react';
+import {useEffect,useState} from 'react';
 import {createAuthClient} from '@neon/auth/next';
 const client=createAuthClient();
 export default function SignIn(){
  const [message,setMessage]=useState(''),[busy,setBusy]=useState(false);
+ useEffect(()=>{
+  if(!new URLSearchParams(window.location.search).has('sig'))return;
+  let cancelled=false;
+  client.getSession().then(async({data,error})=>{
+   if(cancelled)return;
+   if(error){setMessage('Could not check your session. Please retry.');return;}
+   if(data?.user){setBusy(true);const result=await client.oauth2.continue({selected:true});
+    if(result.error){setMessage(result.error.message||'Could not continue the connection.');setBusy(false);}}
+  }).catch(()=>{if(!cancelled){setMessage('Could not continue the connection. Please retry.');setBusy(false);}});
+  return ()=>{cancelled=true;};
+ },[]);
  async function signIn(){setBusy(true);setMessage('');try{
   const result=await client.signIn.social({provider:'google',callbackURL:'/'});
   if(result.error)setMessage(result.error.message||'Sign-in failed.');

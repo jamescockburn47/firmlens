@@ -1,6 +1,6 @@
 # Deployment and recovery
 
-Status at preparation, 7 November 2026: the existing Sites app still serves firmlens.app. The separate Vercel project and Neon database exist; full database restore passed. The replacement owner login, MCP connection, schedule and domain cutover are not yet signed off. Update this status when live evidence exists.
+Status at preparation, 7 November 2026: the existing Sites app still serves firmlens.app. The separate Vercel project and Neon database exist; full database restore passed. The replacement is deployed from GitHub at https://firmlens-beta.vercel.app. Public reads, all stored histories, Google owner sign-in, an owner source refresh and anonymous/forged-header denial have passed. The native MCP continuation, schedule and domain cutover are not yet signed off. Update this status when live evidence exists.
 
 The Vercel project is `firmlens`, in James Cockburn's projects. Its build command is `npm run verify:deploy`, which invokes the canonical `npm run verify`. Environment values are server-side and production-scoped. GitHub contributors do not receive them. Do not attach production database/auth credentials to arbitrary PR previews.
 
@@ -21,3 +21,9 @@ After cutover, Vercel rollback restores code, not database contents. Keep schema
 ## AI and schedules
 
 Browser tools and native MCP share application logic but have different authentication. Prove both. The old native connection points at the original Sites hostname; installing a new URL does not update that connection automatically. Likewise, migrating the database does not migrate the old cloud schedule. Retire or redirect the old schedule and verify the replacement's first run before claiming autonomous updates work.
+
+## Evidence from the replacement
+
+Initial deployed commit: `a479364541a7ca6c95da1aad2fad05f5f42a7444`. GitHub Actions run 42394469623 succeeded on a fresh Ubuntu environment without production secrets. Vercel deployment dpl_9xFePp5GywiezLkGdeq9KcLbgjQK succeeded in London. Public API returned 14 announcements and 12 saved AI summaries. Unauthenticated MCP returned 401; forged owner-header mutation returned 403. Google callback produced Owner view; source refresh saved a new snapshot at 2026-11-07T17:07:04.225Z, confirmed by an independent HTTP read.
+
+A live MCP login then exposed a separate social-login continuation defect. Its fix is being tested before the connection or domain is declared complete.

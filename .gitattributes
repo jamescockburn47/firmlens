@@ -1,0 +1,4 @@
+# Ignore Windows checkout noise; preserve a consistent text format.
+* text=auto eol=lf
+*.png binary
+*.svg text eol=lf

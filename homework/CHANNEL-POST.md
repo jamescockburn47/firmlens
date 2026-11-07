@@ -12,4 +12,6 @@ Please use the site before asking your agent to investigate. I want your observa
 
 The accompanying pack contains the step-by-step guide, architecture diagram, AI instructions and a PR template. No hosting account or production credentials are needed.
 
-[Attach the resident pack or add its GitHub link once access is arranged.]
+Full instructions: https://github.com/jamescockburn47/firmlens/blob/main/homework/START-HERE.md
+
+Code and diagram: https://github.com/jamescockburn47/firmlens
