@@ -10,6 +10,8 @@ Residents may propose code, docs or tests in their own branch. Do not deploy, ch
 
 Keep `.env*`, `.vercel/`, `outputs/`, backups, session tokens and raw database exports out of Git. Retain dependency lockfiles. Keep the public prototype's known limitations visible. Owner-approved deployment instructions live in DEPLOYMENT.md; a PR is a proposal, not publication permission.
 
+Main requires passing `verify` checks and resident PRs require code-owner approval. James alone has a PR-only review exception, authorised to resolve owner-authored PR deadlock. It does not waive CI, authorise direct main pushes, or give residents merge/deployment authority.
+
 <!-- BEGIN:nextjs-agent-rules -->
 
 ## This is NOT the Next.js you know
