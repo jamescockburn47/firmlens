@@ -1,22 +1,52 @@
 import fs from 'node:fs';
-const esc=s=>s.replaceAll('&','&amp;').replaceAll('<','&lt;');
-const boxes=[
- [55,135,270,110,'1  Public website',['Search · filter · inspect sources','Stored summaries and history'],'Public reads verified'],
- [405,135,340,110,'2  Server on Vercel',['Checks permissions and inputs','Reads and writes the database'],'Build and owner check passed'],
- [825,135,300,110,'3  Neon database',['Entries · source text · snapshots','Saved summaries and history'],'Full restore verified'],
- [55,345,270,110,'4  Owner sign-in',['Google → Neon Auth','Only configured owner can write'],'Live owner session verified'],
- [405,345,340,110,'5  AI through Codex',['Reads evidence · drafts analysis','Returns summary and exact quote'],'Native tool test pending'],
- [825,345,300,110,'6  Original source pages',['Known official firm URLs','Fetching is ordinary code'],'Some pages block retrieval'],
- [55,555,270,110,'7  GitHub',['Source · branches · pull requests','Residents propose; James reviews'],'Public repository; CI passes'],
- [405,555,340,110,'8  Hosting and updates',['Vercel runs the replacement app','Old weekly job paused for migration'],'Domain cutover pending'],
- [825,555,300,110,'Resident local preview',['Three invented example records','No credentials or model calls'],'Local UI verified'],
-];
-let svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 790" role="img" aria-labelledby="title desc"><title id="title">FirmLens architecture and migration status</title><desc id="desc">Public website connects to the Vercel server and Neon database. The owner signs in through Neon. Codex supplies AI analysis through tools. Source fetches preserve evidence. GitHub holds proposed changes. Domain cutover and native tool execution remain pending.</desc><defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto-start-reverse"><path d="M0 0 L8 4 L0 8" fill="none" stroke="#52697b" stroke-width="1.5"/></marker></defs><rect width="1180" height="790" fill="#f7f8f3"/><g font-family="Arial,sans-serif" fill="#18364c"><text x="55" y="54" font-size="30" font-weight="700">FirmLens · what runs where</text><text x="55" y="88" font-size="17">Migration snapshot · 7 November 2026 · public domain still on the original host</text></g>';
-svg+='<g stroke="#52697b" stroke-width="2" fill="none" marker-end="url(#arrow)"><path d="M325 187H400"/><path d="M745 187H820"/><path d="M190 345V283H510V250"/><path d="M575 345V250"/><path d="M975 345V250"/><path d="M325 610H400"/><path d="M575 555V460"/></g>';
-for(const [x,y,w,h,title,lines,status] of boxes){const pending=status.includes('pending')||status.includes('block');svg+=`<g font-family="Arial,sans-serif"><rect x="${x}" y="${y}" width="${w}" height="${h+30}" rx="12" fill="white" stroke="#b7c7ca"/><text x="${x+18}" y="${y+29}" font-size="19" font-weight="700" fill="#18364c">${esc(title)}</text>${lines.map((s,i)=>`<text x="${x+18}" y="${y+57+i*23}" font-size="16" fill="#40596b">${esc(s)}</text>`).join('')}<text x="${x+18}" y="${y+117}" font-size="14" font-weight="700" fill="${pending?'#8d4b13':'#24604b'}">${esc(status)}</text></g>`;}
-svg+='<text x="55" y="742" font-family="Arial,sans-serif" font-size="17" fill="#18364c">A quote match checks the words. It does not prove that every claim in the summary follows from them.</text></svg>';
-const target='homework/images/architecture.svg';
-if(process.argv.includes('--check')){
- if(fs.readFileSync(target,'utf8')!==svg)throw new Error('Architecture SVG is stale; run node scripts/render-diagram.mjs');
+const esc = s => s.replaceAll('&', '&amp;').replaceAll('<', '&lt;');
+const text = (x, y, value, size = 19, color = '#263e50', weight = 400) =>
+ `<text x="${x}" y="${y}" font-size="${size}" fill="${color}" font-weight="${weight}">${esc(value)}</text>`;
+function box(x, y, w, title, lines, status, pending = false) {
+ return `<g><rect x="${x}" y="${y}" width="${w}" height="146" rx="12" fill="white" stroke="#adc2cb"/>` +
+  text(x + 18, y + 32, title, 22, '#143a50', 700) +
+  lines.map((s, i) => text(x + 18, y + 63 + i * 25, s, w < 300 ? 17 : 19)).join('') +
+  text(x + 18, y + 124, status, 17, pending ? '#864414' : '#17604b', 700) + '</g>';
+}
+const arrow = (d, both = false) => `<path d="${d}" stroke="#48677c" stroke-width="2.5" fill="none" marker-end="url(#arrow)"${both ? ' marker-start="url(#arrow)"' : ''}/>`;
+let svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1300 1080" role="img" aria-labelledby="title desc">
+<title id="title">FirmLens: code, website, database and AI</title>
+<desc id="desc">GitHub stores code and proposed changes. James reviews changes; automated checks verify the build; Vercel hosts the replacement website and server. A visitor's browser asks the server for saved records in Neon Postgres. The server fetches known official sources, checks the owner's identity through Neon Auth, and exchanges evidence and analysis with ChatGPT or Codex through authenticated tools. AI does not run when a visitor reads a card. The replacement is on firmlens-beta.vercel.app; firmlens.app still serves the original app. AI connections are approved but a new cloud update is untested, and the weekly task is paused.</desc>
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto-start-reverse"><path d="M1 1 L8 4.5 L1 8" fill="none" stroke="#48677c" stroke-width="1.5"/></marker></defs>
+<rect width="1300" height="1080" fill="#f4f7f8"/><g font-family="Arial,sans-serif">`;
+svg += text(40, 49, 'FirmLens · how the pieces fit together', 34, '#143a50', 700);
+svg += text(40, 83, 'Verified 7 November 2026 · replacement: firmlens-beta.vercel.app', 21);
+svg += text(40, 113, 'Public address firmlens.app still serves the original app; domain switch is pending.', 19, '#864414');
+svg += text(40, 160, '1  HOW A CHANGE BECOMES A WEBSITE', 19, '#143a50', 700);
+svg += box(40, 180, 275, 'GitHub', ['Code and its history', 'Your branch and pull request'], 'Public repository');
+svg += box(355, 180, 275, 'James reviews', ['What changed and why?', 'Approve before merging'], 'Review required on main');
+svg += box(670, 180, 275, 'Automated checks', ['Tests, types and build', 'Same verification command'], 'Checks pass on current main');
+svg += box(985, 180, 275, 'Vercel', ['Builds the approved code', 'Hosts website and server'], 'Replacement deployed');
+svg += arrow('M315 253H350') + arrow('M630 253H665') + arrow('M945 253H980');
+svg += text(40, 380, '2  WHAT HAPPENS WHEN SOMEONE USES IT', 19, '#143a50', 700);
+svg += box(40, 420, 350, 'Visitor’s browser', ['Search, filters and source links', 'Reads saved summaries/history'], 'Public · no login required');
+svg += box(475, 420, 350, 'Next.js server on Vercel', ['API: requests and responses', 'Permission and evidence checks'], 'Public reads / owner refresh tested');
+svg += box(910, 420, 350, 'Neon Postgres database', ['Announcements and source text', 'Summaries and checking history'], 'Original data restored and checked');
+svg += arrow('M390 489H470', true) + arrow('M825 489H905', true);
+svg += text(400, 413, 'reads', 16) + text(834, 413, 'stores', 16);
+svg += text(40, 620, '3  HOW RECORDS ARE CHECKED AND UPDATED', 19, '#143a50', 700);
+svg += box(40, 710, 350, 'Official source pages', ['Server fetches known firm URLs', 'Keeps a copy of retrieved text'], 'Some sources block fetching', true);
+svg += box(475, 710, 350, 'ChatGPT / Codex account', ['Tools return evidence to the AI', 'AI sends a summary and quote'], 'Connected · cloud update untested', true);
+svg += box(910, 710, 350, 'Neon Auth', ['Google owner sign-in and OAuth', 'Server allows only James to edit'], 'Browser owner sign-in tested');
+svg += arrow('M215 705V670H515V571', true);
+svg += arrow('M650 705V571', true);
+svg += arrow('M1085 705V670H785V571');
+svg += text(45, 650, 'Fetch source / return text', 17);
+svg += text(666, 695, 'Evidence / analysis', 17);
+svg += text(945, 698, 'Verify identity', 17);
+svg += '<rect x="40" y="890" width="1220" height="72" rx="10" fill="#fff3df" stroke="#b68341"/>';
+svg += text(58, 920, 'Weekly cloud task — PAUSED during migration', 21, '#75400f', 700);
+svg += text(58, 948, 'Still needs to use the new connection and complete a real run. A saved schedule is not proof of a successful update.', 18, '#75400f');
+svg += text(40, 1005, 'Reading a card does not call an LLM. The AI works through the owner’s account; the app has no model API key.', 19);
+svg += text(40, 1042, 'A matching quotation proves the words occur in the source. It does not prove every claim in the summary.', 19);
+svg += '</g></svg>';
+const target = 'homework/images/architecture.svg';
+if (process.argv.includes('--check')) {
+ if (fs.readFileSync(target, 'utf8') !== svg) throw new Error('Architecture SVG is stale; run node scripts/render-diagram.mjs');
  console.log('Architecture SVG matches its source.');
-}else fs.writeFileSync(target,svg);
+} else fs.writeFileSync(target, svg);

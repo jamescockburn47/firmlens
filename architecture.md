@@ -1,43 +1,48 @@
 # FirmLens: what runs where
 
-**Status, 7 November 2026:** the original app still serves `firmlens.app`. The replacement is live for migration checks at https://firmlens-beta.vercel.app, built from the public GitHub repository. The public domain has not moved. The Neon database restore matched all fields: 14 entries, 17 source snapshots and 1 settings row. A successful restore does not prove sign-in, AI-tool access or scheduling.
+[The README contains the diagram, current status and resident starting points.](README.md#architecture-what-each-part-does)
 
-![Architecture diagram and current migration status](homework/images/architecture.svg)
+![FirmLens architecture and verified migration status](homework/images/architecture.svg)
 
-```mermaid
-flowchart TD
-  R["Resident / public reader"] --> F["Website: search, filters, summaries, history"]
-  F --> A["Server API: reads and permission checks"]
-  A <--> D[("Database: entries, raw sources, summaries, history")]
-  O["James: owner sign-in"] --> N["Neon Auth: verify identity"]
-  N --> A
-  A --> S["Fetch known official source URLs"]
-  S --> D
-  C["Codex using James's account"] --> T["Authenticated tools: read evidence / save analysis"]
-  T --> A
-  W["Scheduled instruction: needs migration and proof"] -.-> C
-  G["GitHub: source, branches and reviewed PRs"] --> V["Vercel: build checks and hosting"]
-  V --> F
-  V --> A
-```
+## The two flows
 
-| Element | What it does | Status |
+**Using the app:** a visitor's browser requests records → the Next.js server reads Neon Postgres → stored summaries, sources and history appear. Browsing does not call an LLM or require a login.
+
+**Updating an entry:** the owner asks the server to fetch a known official source → the server stores the retrieved text → ChatGPT/Codex reads evidence through an authenticated tool → it returns proposed analysis → the server checks permissions, current snapshot and quote match → accepted analysis is saved for everyone to read.
+
+Neon Auth verifies the owner's identity. The server's own permission rule then restricts updates to the configured owner. A successful sign-in is not, by itself, editing permission. The browser and native MCP connection use different authentication paths but share the application logic.
+
+## Where it runs
+
+| Layer | Replacement | Original build |
 |---|---|---|
-| Public page | Lets visitors search and read stored records without login. | Working on the original site; replacement public reads verified with all 14 entries and 12 AI summaries. |
-| Server/API | Loads records, fetches known sources and controls writes. | Ported to Next.js; focused tests and build pass. |
-| Neon Postgres | Retains the evidence and derived summaries, including history. | Full restore verified against original export. |
-| Neon Auth | Identifies the owner; signing in alone does not grant editing rights. | Google sign-in returned to Owner view; owner source check persisted; anonymous/forged writes rejected. |
-| Source fetching | Revisits an already-curated URL and stores retrieved text. | Existing logic retained; this is not new-source discovery. |
-| AI analysis | Codex reads a source packet, drafts a summary/change explanation, then calls a save tool. | Existing saved summaries retained. New authenticated connection still needs proof. No model API key is required by this implementation. |
-| Save checks | Reject stale snapshots and invalid quotes; preserve history. | Deterministic checks retained. They do not prove every summary claim follows from the quote. |
-| Weekly check | Tells an agent to repeat source checks and analysis. | Original schedule exists; replacement not yet verified. A schedule is not a successful unattended run. |
-| GitHub/Vercel | Holds reviewable code and runs it on a hosting service. | Public repository and connected deployment exist; clean GitHub CI and Vercel builds pass. Domain cutover remains pending. |
-| Resident preview | Runs the public UI against three invented entries. | Local-only, read-only; no production credentials or model calls. |
+| Code | Public GitHub repository, with reviewed PRs and required checks | Sites project; historical source preserved in `reference/sites/` |
+| Website and server | Next.js on Vercel | Sites / Cloudflare |
+| Database | Neon Postgres | Cloudflare D1 through Sites |
+| Owner authentication | Neon Auth plus an explicit server-side owner check | Sites owner identity |
+| AI worker | Owner's ChatGPT/Codex account through tools | Owner's ChatGPT/Codex account through tools |
+| Public address as checked 7 November | `firmlens-beta.vercel.app` | `firmlens.app` |
 
-**Follow one entry:** the server fetches an official announcement → stores the retrieved text → Codex reads that evidence → sends back a proposed summary and quote → the server checks permission, snapshot and quote → saves the result → everyone reads the stored result. Reading a card does not call an LLM.
+The full original data export was restored and compared field by field. Browser owner sign-in and a source refresh on the replacement passed. Desktop and ChatGPT OAuth connections are approved, but a full native cloud read/analyse/save update has not yet been demonstrated. The weekly task is paused; the public-domain switch remains pending. See [deployment evidence and recovery](DEPLOYMENT.md).
 
-**Two different uses of AI:** the coding agent helped write the application; separately, the owner's account prepares the summaries stored in it. Search, filtering, authentication, database writes and exact-quote matching are ordinary code.
+## What the architecture does not guarantee
 
-**Where a resident's change belongs:** a clearer date label is usually interface work; a filter may involve interface and query logic; a misleading summary may arise from source retrieval, instructions, missing evidence or weak validation. Use the diagram to locate your observation, not to assume its cause.
+A database makes records persistent, not correct. A matching quote proves that the words occur in retrieved text, not that every claim in a summary follows from them. A checked build proves certain software checks passed, not that the interface is useful. A scheduled instruction is not evidence of a successful unattended run.
 
-The original diagram is preserved in [homework/ORIGINAL-ARCHITECTURE.md](homework/ORIGINAL-ARCHITECTURE.md). In the live session, Vercel initially managed the domain, while Sites/Cloudflare hosted the application. Buying a domain did not itself move the app. The migration changes the hosting and database, not that distinction.
+The app revisits a curated list of URLs. It does not yet continuously discover every new announcement. Some sources block fetching. Source packets sent to the model are truncated to 24,000 characters per current/previous text without an explicit flag. [Actual AI instructions and limits](homework/AI-INSTRUCTIONS.md).
+
+## Locate your proposed change
+
+| What you noticed | First place to investigate, without assuming the cause |
+|---|---|
+| Confusing dates, cramped cards, difficult mobile use | Interface components and the meaning of fields returned by the API |
+| Search or filters miss a known entry | Interface filtering, stored categories and record data |
+| A firm or jurisdiction is missing | Catalogue scope and real source availability |
+| Summary overstates a trial or invents a figure | Retrieved evidence, source packet, AI instructions and save validation |
+| Source check appears stale or failed | Fetch result, saved history and actual update workflow |
+
+The coding agent helped make the software. The summary-writing AI is a separate worker using the tools the software exposes. These are two different uses of AI.
+
+The [original diagram](homework/ORIGINAL-ARCHITECTURE.md) is retained for comparison. Buying a domain through Vercel did not itself move the original app to Vercel.
+
+The SVG is generated from `scripts/render-diagram.mjs`; change that file and run `node scripts/render-diagram.mjs`. Verification compares the generated result with the committed image so they cannot silently drift.
