@@ -8,11 +8,12 @@ We built [FirmLens](https://firmlens.app) together on 7 November. Now use it and
 
 Allow about **15–20 minutes**. Open https://firmlens.app and click around. Start with a question you might actually want answered, such as “Which firms are using this AI tool?” or “Is this a trial or a firm-wide rollout?”
 
-Tell us what you liked, what confused you, what felt missing, or what you would change. Think about three things:
+Tell us what you liked, what confused you, what felt missing, or what you would change. Think about four things:
 
 - **Design:** Is it readable? Can you find what you need? Does it work comfortably on your phone?
 - **Functionality:** Do the search, filters and links do what you expect? Is it useful for your question?
 - **AI output:** Open an announcement and its original source. Does the summary accurately report what the source says? Does it leave anything important out or sound more certain than the evidence?
+- **Breadth:** Which firms, jurisdictions or kinds of AI use should be included? Link to a real source for a suggested addition, and explain why it belongs in the tracker.
 
 You do not need to review every feature or find a bug. A positive observation or a reasoned design preference is welcome. If a source will not open, say so rather than guessing what it contains.
 

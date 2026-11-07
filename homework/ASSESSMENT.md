@@ -5,6 +5,7 @@ These are prompts, not a checklist you must complete. Choose the ones relevant t
 | Area | Ask yourself |
 |---|---|
 | Usefulness | What question did I bring? Did the app help answer it? What would make me return? |
+| Breadth | Which firms, jurisdictions or kinds of AI use are missing? Is there a real source for the suggested addition, and does it belong in this tracker? |
 | Design and taste | What is easy or awkward to read? What would I make more prominent? Why do I prefer my alternative? |
 | Functionality | Did a search, filter or link behave as I expected? Can I explain the steps to someone else? |
 | Accessibility | Can I complete my task on a phone, with the keyboard or at increased zoom? Is important meaning conveyed only by colour? |

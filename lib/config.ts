@@ -7,6 +7,7 @@ function https(value:string){const url=new URL(value);if(url.protocol!=='https:'
 export function authConfig(){return {baseUrl:https(required('NEON_AUTH_BASE_URL')),cookies:{secret:required('NEON_AUTH_COOKIE_SECRET').trim(),sessionDataTtl:60},logLevel:'error' as const};}
 export function ownerConfig(){return {email:required('OWNER_EMAIL').toLowerCase(),id:process.env.OWNER_USER_ID||null};}
 export function siteOrigin(){return https(required('APP_ORIGIN'));}
+export function mcpResource(){return https(process.env.MCP_RESOURCE_URL||siteOrigin()+'/mcp');}
 export function config(){
  if(!database){const sql=neon(required('DATABASE_URL'));
   database=createDatabase({one:(q:{sql:string;values:unknown[]})=>sql.query(q.sql,q.values,{fullResults:true}),transaction:(qs:{sql:string;values:unknown[]}[])=>sql.transaction(qs.map(q=>sql.query(q.sql,q.values)),{fullResults:true,isolationLevel:'Serializable'})});}
