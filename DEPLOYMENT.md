@@ -1,6 +1,6 @@
 # Deployment and recovery
 
-Status at preparation, 7 November 2026: the existing Sites app still serves firmlens.app. The separate Vercel project and Neon database exist; full database restore passed. The replacement is deployed from GitHub at https://firmlens-beta.vercel.app. Public reads, all stored histories, Google owner sign-in, an owner source refresh and anonymous/forged-header denial have passed. The native MCP continuation, schedule and domain cutover are not yet signed off. Update this status when live evidence exists.
+Status at preparation, 7 November 2026: the existing Sites app still serves firmlens.app. The separate Vercel project and Neon database exist; full database restore passed. The replacement is deployed from GitHub at https://firmlens-beta.vercel.app. Public reads, all stored histories, Google owner sign-in, an owner source refresh and anonymous/forged-header denial have passed. OAuth consent and token exchange now pass. The headless client cannot execute tools because its approval policy cannot prompt; native tool execution remains unproven. The old weekly job is paused and domain cutover remains pending. Update this status when live evidence exists.
 
 The Vercel project is `firmlens`, in James Cockburn's projects. Its build command is `npm run verify:deploy`, which invokes the canonical `npm run verify`. Environment values are server-side and production-scoped. GitHub contributors do not receive them. Do not attach production database/auth credentials to arbitrary PR previews.
 

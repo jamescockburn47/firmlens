@@ -2,6 +2,8 @@
 
 **Status, 7 November 2026:** the original app still serves `firmlens.app`. The replacement is live for migration checks at https://firmlens-beta.vercel.app, built from the public GitHub repository. The public domain has not moved. The Neon database restore matched all fields: 14 entries, 17 source snapshots and 1 settings row. A successful restore does not prove sign-in, AI-tool access or scheduling.
 
+![Architecture diagram and current migration status](homework/images/architecture.svg)
+
 ```mermaid
 flowchart TD
   R["Resident / public reader"] --> F["Website: search, filters, summaries, history"]

@@ -11,7 +11,7 @@
     "build": "next build",
     "start": "next start --hostname 127.0.0.1",
     "test": "node --experimental-strip-types --test tests/*.test.mjs",
-    "verify": "node scripts/check-source.mjs && npm test && npm run build",
+    "verify": "node scripts/check-source.mjs && node scripts/render-diagram.mjs --check && npm test && npm run build",
     "verify:deploy": "npm run verify",
     "dev:demo": "node scripts/dev-demo.mjs"
   },
