@@ -1,0 +1,86 @@
+[
+  {
+    "id": "clayton-utz-harvey-2025",
+    "firm": "Clayton Utz",
+    "title": "Clayton Utz adopts Harvey in next step of AI journey",
+    "url": "https://www.claytonutz.com/about/media-releases/2025/september/media-release-clayton-utz-adopts-harvey-in-next-step-of-ai-journey",
+    "publishedDate": "2025-09-11",
+    "region": "Australia",
+    "category": "adoption",
+    "summary": "Clayton Utz announced firmwide adoption of Harvey. Its announcement identifies contract review, drafting, due diligence, extraction and summarisation as intended uses.",
+    "evidenceQuote": "Clayton Utz is proud to announce its firmwide adoption of Harvey",
+    "verifiedAt": "2026-11-07T14:36:00Z"
+  },
+  {
+    "id": "cms-harvey-global-2025",
+    "firm": "CMS",
+    "title": "CMS announces roll out of Harvey across 50+ countries",
+    "url": "https://cms.law/en/int/news-information/cms-announces-roll-out-of-harvey-across-50-countries",
+    "publishedDate": "2025-12-10",
+    "region": "Global",
+    "category": "adoption",
+    "summary": "CMS announced expanded Harvey access across its 21 member firms in more than 50 countries, covering over 7,000 lawyers and staff. These are the firm's reported rollout figures.",
+    "evidenceQuote": "providing over 7,000 CMS lawyers and staff with access to the latest AI-powered tools",
+    "verifiedAt": "2026-11-07T14:36:00Z"
+  },
+  {
+    "id": "latham-harvey-rollout-2025",
+    "firm": "Latham & Watkins",
+    "title": "Latham announces firmwide deployment of Harvey",
+    "url": "https://www.lw.com/en/news/latham-announces-firmwide-deployment-of-harvey",
+    "publishedDate": "2025-08-11",
+    "region": "Global",
+    "category": "adoption",
+    "summary": "Latham announced an enterprise licence for a global Harvey rollout to lawyers and related business professionals. The announcement describes research, document analysis and drafting among the intended uses.",
+    "evidenceQuote": "signed an enterprise license for firmwide rollout of the Harvey platform",
+    "verifiedAt": "2026-11-07T14:36:00Z"
+  },
+  {
+    "id": "minterellison-legora-2025",
+    "firm": "MinterEllison",
+    "title": "MinterEllison expands suite of AI tools to unlock the power of human + AI",
+    "url": "https://www.minterellison.com/articles/minterellison-partners-with-legora",
+    "publishedDate": "2025-09-29",
+    "region": "Australia",
+    "category": "partnership",
+    "summary": "MinterEllison announced a partnership with Legora. The firm describes an existing AI tool set that includes Microsoft Copilot and its internally developed Lantern platform.",
+    "evidenceQuote": "MinterEllison has partnered with Legora, marking the next phase of its AI strategy",
+    "verifiedAt": "2026-11-07T14:36:00Z"
+  },
+  {
+    "id": "willkie-harvey-wendell-2025",
+    "firm": "Willkie Farr & Gallagher",
+    "title": "Willkie announces global rollout of Harvey",
+    "url": "https://www.willkie.com/news/2025/08/willkie-announces-global-rollout-of-harvey",
+    "publishedDate": "2025-08-13",
+    "region": "Global",
+    "category": "adoption",
+    "summary": "Willkie announced firmwide Harvey access beginning in September 2025 and planned integration with its own Wendell Intelligence platform. It also announced an innovation partnership involving early product testing.",
+    "evidenceQuote": "Harvey will also be integrated directly into Willkie’s proprietary AI platform, Wendell Intelligence",
+    "verifiedAt": "2026-11-07T14:36:00Z"
+  },
+  {
+    "id": "crowell-legora-six-months-2026",
+    "firm": "Crowell & Moring",
+    "title": "Crowell & Moring reports six months of Legora integration",
+    "url": "https://www.crowell.com/en/insights/firm-news/crowell-and-moring-marks-six-months-of-legora-integration-with-transformative-results-across-global-platform",
+    "publishedDate": "2026-07-22",
+    "region": "United States",
+    "category": "adoption",
+    "summary": "Crowell reported over two million Legora interactions following its January 2026 launch, and said 91% of its attorneys had become users. These are firm-reported adoption figures, not independently verified performance results.",
+    "evidenceQuote": "the firm has recorded more than two million interactions",
+    "verifiedAt": "2026-11-07T14:36:00Z"
+  },
+  {
+    "id": "latham-harvey-fund-formation-2026",
+    "firm": "Latham & Watkins",
+    "title": "Latham and Harvey collaborate on AI-enabled fund formation",
+    "url": "https://www.lw.com/en/news/2026/10/latham-and-harvey-collaborate-to-advance-ai-enabled-capabilities-for-fund-formation",
+    "publishedDate": "2026-10-27",
+    "region": "Global",
+    "category": "partnership",
+    "summary": "Latham and Harvey announced a design partnership to develop an AI-enabled fund formation solution. The stated scope includes limited partnership agreements, side letters, subscription documents and comment memoranda; the announcement describes development rather than a completed public product.",
+    "evidenceQuote": "announced a collaboration to develop an AI-enabled fund formation solution",
+    "verifiedAt": "2026-11-07T14:36:00Z"
+  }
+]

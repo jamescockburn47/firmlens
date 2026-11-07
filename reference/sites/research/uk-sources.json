@@ -1,0 +1,86 @@
+[
+  {
+    "id": "ao-shearman-ai-investment-2026",
+    "firm": "A&O Shearman",
+    "title": "A&O Shearman accelerates AI strategy with a USD1.1 billion lawyer-led commitment",
+    "url": "https://www.aoshearman.com/en/news/ao-shearman-accelerates-ai-strategy-with-a-usd11bn-lawyer-led-commitment",
+    "publishedDate": "2026-11-05",
+    "region": "Global",
+    "category": "product",
+    "summary": "A&O Shearman announced a five-year USD1.1 billion AI commitment, primarily through practice time invested in specialist tools and services. Each practice is to devote at least 3% of its time to that development; this is not described as an entirely cash investment.",
+    "evidenceQuote": "Every practice to invest at least 3% of its time in building specialist AI tools and services for its area of law",
+    "verifiedAt": "2026-11-07T14:36:00Z"
+  },
+  {
+    "id": "linklaters-legora-agent-2026",
+    "firm": "Linklaters",
+    "title": "Linklaters and Legora: bringing a distinctive approach to legal AI",
+    "url": "https://www.linklaters.com/insights/blogs/digilinks/2026/october/linklaters-and-legora-bringing-a-distinctive-approach-to-legal-ai",
+    "publishedDate": "2026-10-22",
+    "region": "Global",
+    "category": "adoption",
+    "summary": "Linklaters reports that 97% of its weekly active Legora users used Agent within the first month of its rollout. The firm describes structured-finance document review and work with Legora on new capabilities, including Skills.",
+    "evidenceQuote": "Following the rollout of Legora Agent, 97% of weekly active users were using Agent within its first month.",
+    "verifiedAt": "2026-11-07T14:36:00Z"
+  },
+  {
+    "id": "fieldfisher-legora-rollout-2026",
+    "firm": "Fieldfisher",
+    "title": "Fieldfisher goes firm-wide with Legora across its international network",
+    "url": "https://www.fieldfisher.com/en/insights/fieldfisher-goes-firm-wide-with-legora-across-its-international-network",
+    "publishedDate": "2026-11-05",
+    "region": "Global",
+    "category": "adoption",
+    "summary": "Fieldfisher announced a Legora rollout to approximately 1,400 lawyers and business-services professionals after a six-week European pilot involving 137 users. Its Berlin AI hub is leading the rollout, with practice-specific workflows and training.",
+    "evidenceQuote": "Fieldfisher is rolling out AI platform Legora to around 1,400 lawyers and Business Services professionals",
+    "verifiedAt": "2026-11-07T14:36:00Z"
+  },
+  {
+    "id": "hsf-kramer-legora-2026",
+    "firm": "Herbert Smith Freehills Kramer",
+    "title": "Herbert Smith Freehills Kramer partners with Legora to empower lawyers with advanced AI tools",
+    "url": "https://www.hsfkramer.com/news/2026-03/hsf-kramer-partners-with-legora-to-empower-lawyers-with-advanced-ai-tools",
+    "publishedDate": "2026-03-12",
+    "region": "Global",
+    "category": "adoption",
+    "summary": "HSF Kramer announced adoption of Legora as its firmwide general-purpose AI platform, including a phased rollout of the client portal. The announcement says Legora adds to a technology stack already including Harvey, Relativity, Wexler.ai and Cicero.",
+    "evidenceQuote": "The addition of Legora builds on the firm’s wider tech stack, which includes Harvey, Relativity, Wexler.ai, and Cicero.",
+    "verifiedAt": "2026-11-07T14:36:00Z"
+  },
+  {
+    "id": "clifford-chance-copilot-2024",
+    "firm": "Clifford Chance",
+    "title": "Clifford Chance expands use of generative AI with deployment of Copilot for Microsoft 365 and Viva Suite for its global workforce",
+    "url": "https://www.cliffordchance.com/news/news/2024/02/clifford-chance-generative-ai-microsoft.html",
+    "publishedDate": "2024-02-28",
+    "region": "Global",
+    "category": "adoption",
+    "summary": "Clifford Chance announced global deployment of Microsoft 365 Copilot and Viva Suite, following its own Clifford Chance Assist rollout. It says AI-generated legal output is identified and validated by a qualified lawyer in the relevant jurisdiction.",
+    "evidenceQuote": "Any legal output generated at Clifford Chance by an AI system is identified as such and validated by a qualified lawyer in that jurisdiction.",
+    "verifiedAt": "2026-11-07T14:36:00Z"
+  },
+  {
+    "id": "pinsent-masons-legora-2026",
+    "firm": "Pinsent Masons",
+    "title": "Pinsent Masons forges strategic partnership with Legora",
+    "url": "https://www.pinsentmasons.com/en-gb/about-us/announcements/pinsent-masons-forges-strategic-partnership-with-legora",
+    "publishedDate": "2026-02-23",
+    "region": "Global",
+    "category": "partnership",
+    "summary": "Pinsent Masons announced a Legora partnership following a pilot in corporate, commercial and property. The announced rollout covered those teams globally, bringing users to 1,000, with pilots planned for remaining practice groups; it was not yet an all-practice rollout.",
+    "evidenceQuote": "with pilots set to commence in all remaining practice groups",
+    "verifiedAt": "2026-11-07T14:36:00Z"
+  },
+  {
+    "id": "browne-jacobson-legora-2025",
+    "firm": "Browne Jacobson",
+    "title": "Browne Jacobson chooses Legora for firm-wide AI deployment",
+    "url": "https://www.brownejacobson.com/about/news-media/browne-jacobson-chooses-legora-for-firm-wide-ai-deployment",
+    "publishedDate": "2025-10-07",
+    "region": "UK and Ireland",
+    "category": "adoption",
+    "summary": "Browne Jacobson announced the purchase of an enterprise-wide Legora licence after evaluating multiple legal AI products. Its pilot covered use cases across the firm's service lines and sectors.",
+    "evidenceQuote": "Browne Jacobson has announced the purchase of an enterprise-wide licence for Legora",
+    "verifiedAt": "2026-11-07T14:36:00Z"
+  }
+]

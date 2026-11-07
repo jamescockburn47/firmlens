@@ -1,0 +1,13 @@
+node_modules/
+.next/
+.vercel/
+.env*
+!.env.example
+outputs/
+work/
+*.tsbuildinfo
+neon-*-notes.txt
+reference/sites/.openai/
+next-env.d.ts
+
+.env*.local

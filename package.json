@@ -1,0 +1,35 @@
+{
+  "name": "firmlens",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "dev": "next dev --hostname 127.0.0.1",
+    "build": "next build",
+    "start": "next start --hostname 127.0.0.1",
+    "test": "node --experimental-strip-types --test tests/*.test.mjs",
+    "verify": "node scripts/check-source.mjs && npm test && npm run build",
+    "verify:deploy": "npm run verify",
+    "dev:demo": "node scripts/dev-demo.mjs"
+  },
+  "dependencies": {
+    "@neon/auth": "0.8.2",
+    "@neon/oauth": "0.3.0",
+    "@neondatabase/serverless": "1.2.0",
+    "next": "16.4.5",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
+    "tailwindcss": "4.2.1",
+    "use-webmcp-tool": "0.3.0"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "0.5.15",
+    "@types/node": "22.19.19",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "typescript": "5.9.3"
+  }
+}

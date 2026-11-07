@@ -1,0 +1,13 @@
+# Channel feedback
+
+I was trying to…
+
+I noticed…
+
+I would keep/change… because…
+
+Entry, link or screenshot:
+
+Optional: I checked the source and found… / I could not establish…
+
+Optional: I would like to try a small PR. My GitHub username is… Please add me as a contributor.
