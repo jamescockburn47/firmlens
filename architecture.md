@@ -1,6 +1,6 @@
 # FirmLens: what runs where
 
-[The README contains the diagram, current status and resident starting points.](README.md#architecture-what-each-part-does)
+[The README contains the diagram, current status and resident starting points.](README.md#how-the-app-works)
 
 ![FirmLens architecture and verified migration status](homework/images/architecture.svg)
 
@@ -14,16 +14,18 @@ Neon Auth verifies the owner's identity. The server's own permission rule then r
 
 ## Where it runs
 
-| Layer | Replacement | Original build |
+| Layer | Live app | Retained original build |
 |---|---|---|
 | Code | Public GitHub repository, with reviewed PRs and required checks | Sites project; historical source preserved in `reference/sites/` |
 | Website and server | Next.js on Vercel | Sites / Cloudflare |
 | Database | Neon Postgres | Cloudflare D1 through Sites |
 | Owner authentication | Neon Auth plus an explicit server-side owner check | Sites owner identity |
 | AI worker | Owner's ChatGPT/Codex account through tools | Owner's ChatGPT/Codex account through tools |
-| Public address as checked 7 November | `firmlens-beta.vercel.app` | `firmlens.app` |
+| Address as checked 7 November | `firmlens.app` (with `www` redirect) | `firmlens-law-firm-ai.jcockburn.chatgpt.site`; owner writes disabled |
 
-The full original data export was restored and compared field by field. Browser owner sign-in and a source refresh on the replacement passed. Desktop and ChatGPT OAuth connections are approved, but a full native cloud read/analyse/save update has not yet been demonstrated. The weekly task is paused; the public-domain switch remains pending. See [deployment evidence and recovery](DEPLOYMENT.md).
+The original export was restored and compared field by field. The public domain now serves Vercel/Neon. Owner sign-in, the source-check button and a cloud read/analyse/save workflow passed. The weekly task is enabled for Mondays at 09:00 Europe/London; a manual run checked all 14 entries, fetched 11 sources and saved two summaries. Three source checks failed and remain visible for review. This does not prove a future timed run has happened.
+
+The approved MCP tool address remains `https://firmlens-beta.vercel.app/mcp`; it is an alias of the same production application, not a separate database. See [deployment evidence and recovery](DEPLOYMENT.md) and [the weekly instructions](UPDATE-WORKFLOW.md).
 
 ## What the architecture does not guarantee
 

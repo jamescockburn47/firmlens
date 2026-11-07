@@ -4,9 +4,9 @@
 
 FirmLens collects law firms' public announcements about AI. You can search, filter, read saved summaries, open the original sources and inspect checking history. It records what firms say: an announcement is not independent proof that a product works or that a firm uses it well.
 
-We built the first version together during the LegalQuants residency. This repository contains the replacement application and the material you need to understand it, question it and propose improvements.
+We built the first version together during the LegalQuants residency. The live app now runs on Vercel and Neon. This repository contains its code and the material you need to understand it, question it and propose improvements.
 
-## Residents: start by using it
+## Homework: start here
 
 **Your task is to exercise judgment and taste.** Try answering a real question with the site before asking an agent to inspect anything. Choose either route:
 
@@ -20,26 +20,32 @@ We built the first version together during the LegalQuants residency. This repos
 | Functionality | Can you answer your question using search, filters, sources and history? What useful action is missing or misleading? |
 | UI and UX | Can you read, navigate and compare comfortably, including on a phone? Which wording, layout or interaction would you change, and why? |
 
+**Post feedback in the residency channel:** “I was trying to… I noticed… I would keep/change… because…”, with a link or screenshot.
+
 You do not need to find a bug. A useful positive observation or a reasoned design preference counts. Do not submit a generic AI-generated code review. **You supply the observation and decide whether the proposed result is better.**
 
 We will acknowledge contributions to the site, including useful feedback. Tell James how you would like to be credited; do not submit someone else's personal details.
 
-## Architecture: what each part does
+## How the app works
 
 ![FirmLens architecture: code and review, website and database, source checking and AI. Current status is explained below.](homework/images/architecture.svg)
 
 ### Current status — checked 7 November 2026
 
-**The source code is on GitHub; the hosting move is not yet complete.** The replacement runs at [firmlens-beta.vercel.app](https://firmlens-beta.vercel.app) on Vercel with Neon. The public address [firmlens.app](https://firmlens.app) still serves the original Sites application. Both can be inspected; say which URL you tested when reporting an issue.
+**The migration is complete.** [firmlens.app](https://firmlens.app) runs on Vercel with Neon; `www.firmlens.app` redirects to it. The original hosting service is retained for recovery, with owner writes disabled.
 
-| Part | Job | Evidence and remaining work |
+| Part | What it does | Status |
 |---|---|---|
-| GitHub | Stores the code, its history and proposed changes. | Public. Main requires passing checks and a code-owner review, including for administrators. |
-| Vercel + Next.js | Runs the replacement website and its server/API. The API handles reads, source checks and saving. | Deployed from GitHub. Public reads and an owner source refresh passed. Public-domain switch remains pending. |
-| Neon Postgres | Stores announcements, retrieved source text, summaries and history. | All fields in the original export matched after import: 14 entries, 17 source snapshots and one settings row. A later owner refresh added a new snapshot. |
-| Neon Auth | Verifies sign-in and AI-tool connections. The server then checks whether the identity is James's configured owner account. | Browser sign-in and owner refresh passed; anonymous and forged-identity writes were rejected. Public browsing needs no account. |
-| ChatGPT / Codex tools | Let the owner's AI account read evidence and submit analysis. MCP is the tool connection; browser tools use the same application logic. | Desktop and ChatGPT connections approved. A complete native cloud read/analyse/save run against the replacement is still unproven. No model API key is bundled. |
-| Weekly cloud task | Asks the agent to revisit sources and prepare updated analysis. | Paused during migration. Must be retargeted and tested before being called operational. |
+| GitHub | Holds the code, proposed changes and automated checks. | Public. Resident PRs require James's approval. James has a PR-only review exception; passing checks remain required. |
+| Vercel + Next.js | Runs the website and server/API: reads, source checks and saving. | Live on the public domain. Owner sign-in and the source-check button tested there. |
+| Neon Postgres | Stores announcements, retrieved text, summaries and history. | Original 14 entries, 17 source snapshots and settings restored and compared field by field. New checks and summaries persist here. |
+| Neon Auth | Checks identity; the server permits only the configured owner to update records. | Browser and AI-tool connections tested. Anonymous and forged-identity writes rejected. Public browsing needs no account. |
+| ChatGPT / Codex tools | Let the owner's AI account read evidence and save analysis. | Cloud read → analyse → save → read-back passed. There is no model API key in the app. |
+| Weekly cloud task | Revisits the existing source URLs and updates analysis. | Enabled for Mondays at 09:00 Europe/London. A manual run checked all 14 records, fetched 11 sources and saved 2 summaries. Three source failures were recorded. |
+
+**Known source problems:** Fieldfisher and Herbert Smith Freehills Kramer blocked automated fetching (HTTP 403). The Linklaters page did not contain the expected evidence passage and needs human review. These are visible failures, not successful updates. A future timed run has not yet occurred.
+
+The approved AI-tool address remains `firmlens-beta.vercel.app/mcp`. Despite its name, it serves the same production Vercel app and Neon database. Keeping it stable preserves the approved tool connections.
 
 [More detail and the original architecture](architecture.md) · [Deployment evidence and recovery](DEPLOYMENT.md)
 
@@ -60,7 +66,17 @@ This is why there is a server and a database: visitors see shared, persistent re
 - Evidence supplied to the model is limited to 24,000 characters per current/previous text, without an explicit truncation flag.
 - Good instructions are not the same as enforced rules. For example, pilot-versus-rollout wording is requested in the instructions, but not semantically checked by the save code.
 
-[Read the actual AI instructions and checks](homework/AI-INSTRUCTIONS.md) · [Optional synthetic test cases](homework/AI-CASES.md)
+[Read the actual AI instructions and checks](homework/AI-INSTRUCTIONS.md) · [Weekly task instructions](UPDATE-WORKFLOW.md) · [Optional synthetic test cases](homework/AI-CASES.md)
+
+## Optional: make one small PR
+
+1. Start with something you noticed while using the site. Decide what you would change and why.
+2. [Create a GitHub account](CONTRIBUTING.md#1-create-a-github-account). Send James your username if you want contributor access, or use a fork.
+3. [Set up a local copy with your agent](CONTRIBUTING.md#3-open-a-local-copy-with-your-coding-agent). The safe demo uses invented records and needs no live credentials.
+4. Ask the agent to investigate and implement your chosen change. [Use these prompts](homework/START-HERE.md#prompt-1--investigate-my-observation). Check the result yourself and run the project checks.
+5. [Submit a PR for James to review](CONTRIBUTING.md#5-save-your-branch-and-open-a-pr). Include your observation, reason, before/after evidence and tests. Do not merge or deploy it yourself.
+
+A PR is a proposed change, not an automatic release. A small improvement you can explain and demonstrate is enough. If setup gets in the way, give feedback instead.
 
 ## Find the part you want to understand
 
