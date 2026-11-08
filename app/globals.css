@@ -33,6 +33,14 @@ h1 { font-family:Georgia,'Times New Roman',serif; font-size:clamp(38px,4.1vw,59p
 .intro-note p { font-size:16px; line-height:1.6; margin:17px 0 23px; }
 .update-cadence { display:flex; gap:10px; align-items:flex-start; font-size:11px; color:var(--muted); border-top:1px solid var(--line); padding-top:13px; }
 .update-cadence>span:first-child { font-size:19px; line-height:1; }
+.metric-link { display:flex; flex-direction:column; gap:4px; text-decoration:none; }
+.metric-link .metric-label { text-decoration:underline; text-underline-offset:3px; }
+.changes-section { padding-top:46px; scroll-margin-top:20px; }
+.changes-note { font-size:13px; color:var(--muted); margin:8px 0 18px; max-width:620px; }
+.changes-list { overflow-wrap:anywhere; list-style:none; margin:0; padding:0; }
+.changes-list li { border-top:1px solid var(--line); padding:16px 0; }
+.changes-list h3 { margin:4px 0; font-size:16px; font-weight:600; }
+.changes-list p { font-size:14px; line-height:1.6; margin:8px 0; }
 .metrics { display:grid; grid-template-columns:1fr 1fr 1.3fr 1.2fr; padding:25px 0; border-block:1px solid var(--line); gap:25px; }
 .metrics>div { border-right:1px solid var(--line); display:flex; flex-direction:column; gap:4px; }
 .metric-value { font-family:Georgia,'Times New Roman',serif; font-size:36px; line-height:1.15; }
