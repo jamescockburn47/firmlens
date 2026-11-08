@@ -7,6 +7,7 @@ export type Entry = {
 export type History = { id: string; checkedAt: string; status: string; changeSummary: string | null; aiSummary: string | null };
 export type Data = { entries: Entry[]; stats: { total: number; firms: number; checkedAt: string | null }; viewer: { isOwner: boolean }; schedule: { label: string } };
 export const categories: Record<string, string> = { adoption: "AI adoption", partnership: "Partnerships", product: "Products & services", policy: "AI policies", training: "Training" };
+export function changedSources(entries: Entry[]) { return entries.filter(entry => entry.changeStatus === "changed"); }
 export function dateLabel(value: string | null | undefined) {
   if (!value) return "Not recorded";
   const date = new Date(value);
